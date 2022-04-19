@@ -3,7 +3,7 @@ import { Delete } from "react-feather";
 
 function Keyboard(props) {
   const keyStyle =
-    "dark:bg-zinc-900 bg-zinc-100 dark:hover:text-zinc-900 hover:bg-teal-200 transition mt-4 rounded-full text-xl pb-1 w-12 h-12 text-center flex justify-center items-center";
+    "dark:bg-zinc-900 bg-zinc-100 dark:hover:text-zinc-900 hover:bg-teal-200 transition mt-4 rounded-full text-xl w-12 h-12 text-center flex justify-center items-center";
   return (
     <div className="flex flex-col justify-between">
       <div className="flex justify-evenly items-center">

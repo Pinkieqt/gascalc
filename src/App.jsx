@@ -7,6 +7,7 @@ import Keyboard from "./components/Keyboard";
 import React, { useState } from "react";
 import { HandleNumpadClick } from "./services/NumpadService";
 import Login from "./pages/Login";
+import ProtectedRoute from "./services/ProtectedRoute";
 
 function App() {
   let loc = useLocation();
@@ -18,13 +19,42 @@ function App() {
   }
 
   return (
-    <div className="dark:text-zinc-100 text-zinc-600 min-h-screen">
+    <div className="dark:text-zinc-100 text-zinc-600 min-h-screen lg:w-1/3 mx-auto">
       {loc.pathname !== "/login" && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="settings" element={<Settings />} />
-        <Route path="add" element={<Append />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="add"
+          element={
+            <ProtectedRoute>
+              <Append />
+            </ProtectedRoute>
+          }
+        />
         <Route path="login" element={<Login />} />
+        <Route
+          path="*"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       {/* Modal */}

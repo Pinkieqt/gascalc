@@ -1,8 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../services/Firebase-config";
 
 function Settings() {
   let navigate = useNavigate();
+
+  // Function to Logout
+  function logout() {
+    signOut(auth)
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  }
+
   return (
     <div className="p-3 pb-16">
       <h1 className="text-center text-xl font-bold my-5">Settings</h1>
